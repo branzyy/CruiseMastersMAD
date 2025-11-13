@@ -23,24 +23,31 @@ class ModelsActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        carAdapter = CarAdapter { car, action ->
-            when (action) {
-                "purchase" -> {
-                    addPurchase(car)
-                    Toast.makeText(this, "${car.name} purchased successfully!", Toast.LENGTH_SHORT).show()
+        carAdapter = CarAdapter(cars) { car ->
+            val options = arrayOf("Purchase", "Book")
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Choose an action for ${car.name}")
+                .setItems(options) { _, which ->
+                    when (which) {
+                        0 -> {
+                            addPurchase(car)
+                            Toast.makeText(this, "${car.name} purchased successfully!", Toast.LENGTH_SHORT).show()
+                        }
+                        1 -> {
+                            addBooking(car)
+                            Toast.makeText(this, "${car.name} booked successfully!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
-                "book" -> {
-                    addBooking(car)
-                    Toast.makeText(this, "${car.name} booked successfully!", Toast.LENGTH_SHORT).show()
-                }
-            }
+                .show()
         }
 
-        binding.recyclerViewCars.apply {
+        binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ModelsActivity)
             adapter = carAdapter
         }
     }
+
 
     private fun loadCars() {
         val sampleCars = listOf(

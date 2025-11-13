@@ -11,7 +11,7 @@ import com.example.cruisemastersmad.models.Car
 
 class CarAdapter(
     private val cars: List<Car>,
-    private val onItemClick: (Car) -> Unit
+    private val onItemClick: (Car) -> Unit  // single-click listener
 ) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -38,6 +38,7 @@ class CarAdapter(
             carPrice.text = "$${car.price}/day"
             carImage.setImageResource(car.imageResId)
 
+            // Single click triggers the listener in the activity
             itemView.setOnClickListener { onItemClick(car) }
         }
     }

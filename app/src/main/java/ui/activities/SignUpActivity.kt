@@ -32,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
                     if (password.length >= 6) {
                         signUpUser(firstName, lastName, email, password)
                     } else {
-                        Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
