@@ -1,48 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_light"
+    android:background="@drawable/background_four"
     android:padding="32dp">
 
+    <!-- Welcome Text -->
     <TextView
         android:id="@+id/tvWelcome"
+        style="@style/HeroTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome, User!"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="48dp"
+        android:text="Welcome, User!" />
 
+    <!-- Buttons -->
     <Button
         android:id="@+id/btnBrowseModels"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Browse Car Models"
-        android:backgroundTint="@color/primary_color"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp" />
+        style="@style/PrimaryButton"
+        android:layout_marginBottom="16dp"
+        android:text="Browse Car Models" />
 
     <Button
         android:id="@+id/btnProfile"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="My Profile"
-        android:backgroundTint="@color/secondary_color"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_marginBottom="32dp" />
+        style="@style/SecondaryButton"
+        android:layout_marginBottom="32dp"
+        android:text="My Profile" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Logout"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        style="@style/LogoutButton"
+        android:text="Logout" />
 
 </LinearLayout>

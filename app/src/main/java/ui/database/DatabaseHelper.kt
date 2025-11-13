@@ -1,4 +1,4 @@
-package ui.Database
+package ui.database
 
 class DatabaseHelper {
 }
