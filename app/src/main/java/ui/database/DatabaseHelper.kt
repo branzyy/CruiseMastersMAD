@@ -1,4 +1,4 @@
-package ui.Database
+package ui.database
 
 import android.content.ContentValues
 import android.content.Context
