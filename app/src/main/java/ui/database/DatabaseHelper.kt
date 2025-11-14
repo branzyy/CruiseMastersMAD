@@ -22,7 +22,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_EMAIL = "email"
         const val COLUMN_PASSWORD = "password"
         const val COLUMN_VERIFICATION_CODE = "verification_code"
-        const val COLUMN_VIRIFICATION_EXPIRY = "verification_expiry"
+        const val COLUMN_VERIFICATION_EXPIRY = "verification_expiry"
         const val COLUMN_ID_NUMBER = "id_number"
 
         // Car table columns
@@ -80,7 +80,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_PASSWORD TEXT NOT NULL,
                 $COLUMN_EMAIL TEXT NOT NULL,
                 $COLUMN_VERIFICATION_CODE TEXT,
-                $COLUMN_VIRIFICATION_EXPIRY TEXT
+                ${COLUMN_VERIFICATION_EXPIRY}RIFICATION_EXPIRY TEXT
               
             )
         """.trimIndent()
