@@ -20,7 +20,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_arrow_back"
+                android:src="@drawable/logo2"
                 android:contentDescription="@string/back" />
 
             <TextView
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/car_placeholder"
+            android:src="@drawable/logo2"
             android:layout_marginTop="16dp" />
 
         <TextView
