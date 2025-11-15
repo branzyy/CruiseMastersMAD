@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package ui.activities
 
 import android.os.Bundle
 import android.widget.Toast

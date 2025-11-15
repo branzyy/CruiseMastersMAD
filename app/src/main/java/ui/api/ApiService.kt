@@ -1,6 +1,6 @@
-package com.example.cruisemastersmad.api
+package ui.api
 
-import com.example.cruisemastersmad.models.Car
+import ui.models.Car
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

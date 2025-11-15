@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package ui.activities
 
 import android.content.Intent
 import android.os.Bundle

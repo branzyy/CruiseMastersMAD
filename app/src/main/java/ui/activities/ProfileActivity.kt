@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,9 @@ import com.example.cruisemastersmad.ui.adapters.BookingAdapter
 import com.example.cruisemastersmad.ui.adapters.PurchaseAdapter
 import ui.models.Booking
 import ui.models.Purchase
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class ProfileActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityProfileBinding
     private lateinit var purchaseAdapter: PurchaseAdapter
     private lateinit var bookingAdapter: BookingAdapter
@@ -59,13 +57,14 @@ class ProfileActivity : AppCompatActivity() {
 
         val purchases = purchasesSet.map { purchaseData ->
             val parts = purchaseData.split("|")
-            val date = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(parts[2].toLong()))
             Purchase(
                 id = parts[0].toInt(),
                 carName = parts[1],
-                date = date
+                price = parts[2].toDouble(),
+                purchaseDate = parts[3],
+                status = parts[4]
             )
-        }.reversed() // Show latest first
+        }.reversed()
 
         purchaseAdapter.submitList(purchases)
 
@@ -84,13 +83,14 @@ class ProfileActivity : AppCompatActivity() {
 
         val bookings = bookingsSet.map { bookingData ->
             val parts = bookingData.split("|")
-            val date = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(parts[2].toLong()))
             Booking(
                 id = parts[0].toInt(),
-                carName = parts[1],
-                date = date
+                userId = parts[1].toInt(),
+                vehicleName = parts[2],
+                pickupDate = parts[3],
+                returnDate = parts[4]
             )
-        }.reversed() // Show latest first
+        }.reversed()
 
         bookingAdapter.submitList(bookings)
 
@@ -105,7 +105,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 }
