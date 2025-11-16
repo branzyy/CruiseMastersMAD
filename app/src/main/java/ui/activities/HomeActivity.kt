@@ -34,8 +34,11 @@ class HomeActivity : AppCompatActivity() {
     private fun loadUserData() {
         val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
         val userName = sharedPref.getString("user_name", "User")
+        val userEmail = sharedPref.getString("user_email", "")
 
         binding.tvWelcome.text = "Welcome, $userName!"
+        // You can also display email if needed
+        // binding.tvUserEmail.text = userEmail
     }
 
     private fun logoutUser() {

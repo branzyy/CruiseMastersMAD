@@ -4,16 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.cruisemastersmad.databinding.ActivitySignupBinding
 import com.example.cruisemastersmad.ui.activities.HomeActivity
+import com.example.cruisemastersmad.ui.models.User
+import com.example.cruisemastersmad.ui.viewmodels.LoginViewModel
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         setupViews()
     }
@@ -31,9 +37,9 @@ class SignUpActivity : AppCompatActivity() {
 
                 if (password == confirmPassword) {
                     if (password.length >= 6) {
-                        signUpUser(firstName, lastName, email, password)
+                        checkEmailAndSignUp(firstName, lastName, email, password)
                     } else {
-                        Toast.makeText(this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
@@ -52,25 +58,50 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun signUpUser(firstName: String, lastName: String, email: String, password: String) {
+    private fun checkEmailAndSignUp(firstName: String, lastName: String, email: String, password: String) {
         binding.progressBar.visibility = android.view.View.VISIBLE
         binding.btnSignUp.isEnabled = false
 
-        android.os.Handler().postDelayed({
-            val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
-            with(sharedPref.edit()) {
-                putString("user_email", email)
-                putString("user_name", "$firstName $lastName")
-                putBoolean("is_logged_in", true)
-                apply()
+        loginViewModel.checkEmailExists(email) { exists ->
+            runOnUiThread {
+                if (exists) {
+                    Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = android.view.View.GONE
+                    binding.btnSignUp.isEnabled = true
+                } else {
+                    signUpUser(firstName, lastName, email, password)
+                }
             }
+        }
+    }
 
-            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+    private fun signUpUser(firstName: String, lastName: String, email: String, password: String) {
+        val user = User(
+            firstname = firstName,
+            lastname = lastName,
+            email = email,
+            password = password
+        )
 
-            binding.progressBar.visibility = android.view.View.GONE
-            binding.btnSignUp.isEnabled = true
-        }, 1500)
+        loginViewModel.signup(user) { userId ->
+            runOnUiThread {
+                // Store user data in SharedPreferences
+                val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putLong("user_id", userId)
+                    putString("user_email", email)
+                    putString("user_name", "$firstName $lastName")
+                    putBoolean("is_logged_in", true)
+                    apply()
+                }
+
+                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+
+                binding.progressBar.visibility = android.view.View.GONE
+                binding.btnSignUp.isEnabled = true
+            }
+        }
     }
 }

@@ -46,9 +46,13 @@ class ProfileActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
         val userName = sharedPref.getString("user_name", "User")
         val userEmail = sharedPref.getString("user_email", "user@example.com")
+        val userId = sharedPref.getLong("user_id", -1)
 
         binding.tvUserName.text = userName
         binding.tvUserEmail.text = userEmail
+
+        // Now we can use userId to filter purchases and bookings for this user
+        // This will be implemented when we integrate with Room database
     }
 
     private fun loadPurchases() {
@@ -58,11 +62,11 @@ class ProfileActivity : AppCompatActivity() {
         val purchases = purchasesSet.map { purchaseData ->
             val parts = purchaseData.split("|")
             Purchase(
-                id = parts[0].toInt(),
-                carName = parts[1],
-                price = parts[2].toDouble(),
-                purchaseDate = parts[3],
-                status = parts[4]
+                purchaseID = parts[0],
+                vehiclename = parts[1],
+                purchasedate = parts[3],
+                email = parts[4],
+                status = parts[5]
             )
         }.reversed()
 
@@ -86,18 +90,19 @@ class ProfileActivity : AppCompatActivity() {
             bookingsSet.map { bookingData ->
                 val parts = bookingData.split("|")
                 Booking(
-                    id = parts[0].toInt(),
-                    userId = parts[1].toInt(),
-                    carName = parts[2],
-                    startDate = parts[3],
-                    endDate = parts[4]
+                    bookingsID = parts[0],
+                    vehiclename = parts[1],
+                    pickupdate = parts[2],
+                    returndate = parts[3],
+                    email = parts[4],
+                    status = parts[5]
                 )
             }.reversed()
         } else {
             // Sample data if no bookings exist
             listOf(
-                Booking(1, 1, "BMW M8", "2024-01-15", "2024-01-20"),
-                Booking(2, 1, "Mercedes AMG", "2024-02-01", "2024-02-05")
+                Booking("1", "BMW M8", "2024-01-15", "2024-01-20", "user@example.com", "Confirmed"),
+                Booking("2", "Mercedes AMG", "2024-02-01", "2024-02-05", "user@example.com", "Pending")
             )
         }
 
@@ -124,8 +129,8 @@ class ProfileActivity : AppCompatActivity() {
     private fun addSamplePurchases() {
         val sharedPref = getSharedPreferences("user_purchases", MODE_PRIVATE)
         val samplePurchases = setOf(
-            "1|BMW M8|1500.0|2024-01-15|Completed",
-            "2|Mercedes AMG|1200.0|2024-02-01|Processing"
+            "P001|BMW M8|2024-01-15|user@example.com|Completed",
+            "P002|Mercedes AMG|2024-02-01|user@example.com|Processing"
         )
 
         with(sharedPref.edit()) {
@@ -138,8 +143,8 @@ class ProfileActivity : AppCompatActivity() {
     private fun addSampleBookings() {
         val sharedPref = getSharedPreferences("user_bookings", MODE_PRIVATE)
         val sampleBookings = setOf(
-            "1|1|BMW M8|2024-01-15|2024-01-20",
-            "2|1|Mercedes AMG|2024-02-01|2024-02-05"
+            "B001|BMW M8|2024-01-15|2024-01-20|user@example.com|Confirmed",
+            "B002|Mercedes AMG|2024-02-01|2024-02-05|user@example.com|Pending"
         )
 
         with(sharedPref.edit()) {
