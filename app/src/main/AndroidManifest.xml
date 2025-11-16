@@ -29,6 +29,9 @@
         <activity android:name=".ui.activities.HomeActivity" />
         <activity android:name=".ui.activities.ModelsActivity" />
         <activity android:name=".ui.activities.ProfileActivity" />
+        <activity android:name=".ui.activities.BookingActivity" />
+        <activity android:name=".ui.activities.PurchaseActivity" />
+        <activity android:name=".ui.activities.CarDetailsActivity" />
     </application>
 
 </manifest>
