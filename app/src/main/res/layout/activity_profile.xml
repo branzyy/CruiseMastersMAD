@@ -1,124 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_four">
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="My Profile"
-            app:navigationIcon="@android:drawable/ic_menu_revert"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="@string/profile"
             app:titleTextColor="@color/white" />
 
+        <!-- User Info -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <!-- User Info -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="User Information"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                android:layout_marginBottom="24dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvUserName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="User Name"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:id="@+id/tvUserEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="user@example.com"
-                        android:textSize="14sp"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Purchases -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Purchases"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_profile"
+                android:background="@drawable/bg_profile_circle"
+                android:padding="16dp"
+                android:contentDescription="@string/profile_picture" />
 
             <TextView
-                android:id="@+id/tvNoPurchases"
+                android:id="@+id/tvUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No purchases yet"
-                android:textSize="16sp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:padding="32dp"
-                android:visibility="visible" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPurchases"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:visibility="gone" />
-
-            <!-- Bookings -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Bookings"
+                android:text="User Name"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
+                tools:text="John Doe" />
 
             <TextView
-                android:id="@+id/tvNoBookings"
+                android:id="@+id/tvUserEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No bookings yet"
-                android:textSize="16sp"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:padding="32dp"
-                android:visibility="visible" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewBookings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:text="user@example.com"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:text="john.doe@example.com" />
 
         </LinearLayout>
+
+        <!-- Purchases Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/my_purchases"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvNoPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/no_purchases"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="120dp"
+            tools:listitem="@layout/item_purchase" />
+
+        <!-- Bookings Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/my_bookings"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvNoBookings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/no_bookings"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBookings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:minHeight="120dp"
+            tools:listitem="@layout/item_booking" />
 
     </LinearLayout>
 

@@ -4,19 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruisemastersmad.R
 import ui.models.Purchase
 
-class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>() {
-
-    private val purchases = mutableListOf<Purchase>()
-
-    fun submitList(newList: List<Purchase>) {
-        purchases.clear()
-        purchases.addAll(newList)
-        notifyDataSetChanged()
-    }
+class PurchaseAdapter : ListAdapter<Purchase, PurchaseAdapter.PurchaseViewHolder>(PurchaseDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PurchaseViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,22 +19,33 @@ class PurchaseAdapter : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>
     }
 
     override fun onBindViewHolder(holder: PurchaseViewHolder, position: Int) {
-        holder.bind(purchases[position])
+        val purchase = getItem(position)
+        holder.bind(purchase)
     }
 
-    override fun getItemCount() = purchases.size
-
     class PurchaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val carName: TextView = itemView.findViewById(R.id.purchaseCarName)
-        private val amount: TextView = itemView.findViewById(R.id.purchaseAmount)
-        private val date: TextView = itemView.findViewById(R.id.purchaseDate)
-        private val status: TextView = itemView.findViewById(R.id.purchaseStatus)
+        private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
+        private val amountTextView: TextView = itemView.findViewById(R.id.amountTextView)
+        private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
+        private val statusTextView: TextView = itemView.findViewById(R.id.statusTextView)
 
         fun bind(purchase: Purchase) {
-            carName.text = purchase.carName
-            amount.text = "$${purchase.price}"
-            date.text = purchase.purchaseDate
-            status.text = purchase.status
+            carNameTextView.text = purchase.carName
+            amountTextView.text = "$${purchase.price}"
+            dateTextView.text = purchase.purchaseDate
+            statusTextView.text = purchase.status
+        }
+    }
+
+    companion object {
+        private val PurchaseDiffCallback = object : DiffUtil.ItemCallback<Purchase>() {
+            override fun areItemsTheSame(oldItem: Purchase, newItem: Purchase): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Purchase, newItem: Purchase): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

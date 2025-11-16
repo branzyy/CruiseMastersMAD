@@ -12,6 +12,7 @@ espresso = "3.5.1"
 retrofit = "2.9.0"
 gson = "2.10.1"
 glide = "4.16.0"
+firebaseAppdistributionGradle = "5.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +25,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+firebase-appdistribution-gradle = { group = "com.google.firebase", name = "firebase-appdistribution-gradle", version.ref = "firebaseAppdistributionGradle" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_four">
+    android:background="@color/white">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- Header Section -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:title="Our Car Models"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        app:titleTextColor="@color/white" />
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="?attr/colorPrimary">
 
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/back"
+            android:tint="@color/white" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/browse_models"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- Search Bar -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_view_background"
+        android:queryHint="@string/search_cars"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@android:color/transparent" />
+
+    <!-- Cars Grid -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCars"
+        android:id="@+id/carsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp" />
-
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        tools:listitem="@layout/item_car" />
 
 </LinearLayout>

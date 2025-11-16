@@ -1,40 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white">
 
-    <LinearLayout
+    <!-- Header Section -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:padding="16dp"
+        android:background="?attr/colorPrimary">
 
-        <ImageButton
+        <!-- Back Button as regular Button -->
+
+        <!-- Car Name -->
+        <Button
             android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/logo2"
-            android:contentDescription="@string/back" />
+            android:drawableTint="@color/white"
+            android:padding="12dp"
+            android:text="@string/back"
+            android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/carNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Car Name"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="BMW M8" />
+
+        <!-- Dates Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"/>
+
+        <!-- Booking ID -->
+        <TextView
+            android:id="@+id/bookingIdTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Booking #1"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            tools:text="Booking #1" />
+
+        <!-- Start Date -->
+        <TextView
+            android:id="@+id/startDateTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="Start: 2024-01-15"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            tools:text="Start: 2024-01-15" />
+
+        <!-- End Date -->
+        <TextView
+            android:id="@+id/endDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="End: 2024-01-20"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            android:textAlignment="textEnd"
+            tools:text="End: 2024-01-20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/my_bookings"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginStart="16dp" />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
+    <!-- RecyclerView for Bookings List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookingsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        tools:listitem="@layout/item_booking" />
 
 </LinearLayout>
