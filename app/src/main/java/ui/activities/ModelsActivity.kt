@@ -8,6 +8,7 @@ import com.example.cruisemastersmad.databinding.ActivityModelsBinding
 import com.example.cruisemastersmad.activities.CarDetailsActivity
 import com.example.cruisemastersmad.ui.adapters.CarAdapter
 import com.example.cruisemastersmad.ui.models.Car
+import com.example.cruisemastersmad.ui.activities.HomeActivity
 
 class ModelsActivity : AppCompatActivity() {
 
