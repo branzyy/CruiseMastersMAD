@@ -1,13 +1,31 @@
 <resources>
+    <!-- App info -->
     <string name="app_name">CruiseMasters</string>
+    <string name="app_logo">Cruise Masters</string>
+    <string name="app_tagline">Find your dream car</string>
+
+    <!-- General -->
     <string name="back">Back</string>
+    <string name="features">Features</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+
+    <!-- Home / Browsing -->
+    <string name="browse_models">Browse Models</string>
+    <string name="browse_models_desc">Explore our cars collection</string>
+
+    <!-- Login / Signup -->
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <!-- Bookings / Cars -->
     <string name="my_bookings">My Bookings</string>
     <string name="car_details">Car Details</string>
     <string name="book_now">Book Now</string>
-    <string name="horsepower">Horsepower</string>
-    <string name="acceleration">Acceleration</string>
-    <string name="top_speed">Top Speed</string>
-    <string name="period">Period</string>
     <string name="total_price">Total Price</string>
     <string name="status">Status</string>
     <string name="amount">Amount</string>

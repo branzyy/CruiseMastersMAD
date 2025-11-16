@@ -27,7 +27,7 @@
                 android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="12dp"
-                android:src="@drawable/ic_arrow_back"
+                android:src="@drawable/backlogo"
                 android:contentDescription="@string/back"
                 android:tint="@color/white" />
 
@@ -120,28 +120,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="• Premium Sound System"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="• GPS Navigation"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="• Climate Control"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="• Leather Seats"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                 </LinearLayout>

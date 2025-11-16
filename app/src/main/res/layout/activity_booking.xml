@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Booking #1"
-            android:textColor="@color/gray"
+            android:textColor="@color/white"
             android:textSize="12sp"
             tools:text="Booking #1" />
 

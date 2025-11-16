@@ -20,7 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIcon="@drawable/backlogo"
             app:title="@string/login"
             app:titleTextColor="@color/white" />
 
