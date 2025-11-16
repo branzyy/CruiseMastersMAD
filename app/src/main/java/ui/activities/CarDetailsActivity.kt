@@ -1,11 +1,10 @@
-package com.example.cruisemastersmad.activities
+package com.example.cruisemastersmad.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cruisemastersmad.R
 import com.example.cruisemastersmad.databinding.ActivityCarDetailsBinding
 import com.example.cruisemastersmad.ui.models.Car
-import java.io.Serializable
 
 class CarDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCarDetailsBinding
@@ -15,8 +14,8 @@ class CarDetailsActivity : AppCompatActivity() {
         binding = ActivityCarDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Get the car object from the intent using Serializable
-        val car = intent.getSerializableExtra("car") as? Car
+        // Get the car object from the intent using Parcelable
+        val car = intent.getParcelableExtra("car", Car::class.java)
         car?.let { displayCarDetails(it) }
 
         setupClickListeners()

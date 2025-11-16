@@ -2,9 +2,11 @@ package com.example.cruisemastersmad.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cruisemastersmad.R
 import com.example.cruisemastersmad.databinding.ActivityHomeBinding
-import com.example.cruisemastersmad.ui.activities.MainActivity
+
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -29,6 +31,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnLogout.setOnClickListener {
             logoutUser()
+        }
+
+        // Also set click listener on the card itself
+        binding.root.findViewById<LinearLayout>(R.id.browseModelsCard).setOnClickListener {
+            startActivity(Intent(this, ModelsActivity::class.java))
         }
     }
 
