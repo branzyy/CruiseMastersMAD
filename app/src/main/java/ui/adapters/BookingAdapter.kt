@@ -8,15 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cruisemastersmad.R
 import ui.models.Booking
 
-class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
-
-    private val bookings = mutableListOf<Booking>()
-
-    fun submitList(newList: List<Booking>) {
-        bookings.clear()
-        bookings.addAll(newList)
-        notifyDataSetChanged()
-    }
+class BookingAdapter(private val bookings: List<Booking>) :
+    RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,18 +18,23 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
-        holder.bind(bookings[position])
+        val booking = bookings[position]
+        holder.bind(booking)
     }
 
-    override fun getItemCount() = bookings.size
+    override fun getItemCount(): Int = bookings.size
 
     class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val carName: TextView = itemView.findViewById(R.id.bookingCarName)
-        private val period: TextView = itemView.findViewById(R.id.bookingPeriod)
+        private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
+        private val startDateTextView: TextView = itemView.findViewById(R.id.startDateTextView)
+        private val endDateTextView: TextView = itemView.findViewById(R.id.endDateTextView)
+        private val bookingIdTextView: TextView = itemView.findViewById(R.id.bookingIdTextView)
 
         fun bind(booking: Booking) {
-            carName.text = booking.vehicleName
-            period.text = "${booking.pickupDate} → ${booking.returnDate}"
+            carNameTextView.text = booking.carName
+            startDateTextView.text = "Start: ${booking.startDate}"
+            endDateTextView.text = "End: ${booking.endDate}"
+            bookingIdTextView.text = "Booking #${booking.id}"
         }
     }
 }

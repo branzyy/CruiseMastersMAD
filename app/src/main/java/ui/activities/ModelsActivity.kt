@@ -1,14 +1,16 @@
-package ui.activities
+package com.example.cruisemastersmad.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cruisemastersmad.activities.CarDetailsActivity
 import com.example.cruisemastersmad.databinding.ActivityModelsBinding
 import com.example.cruisemastersmad.ui.adapters.CarAdapter
 import ui.models.Car
 
 class ModelsActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityModelsBinding
     private lateinit var carAdapter: CarAdapter
 
@@ -18,78 +20,109 @@ class ModelsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupRecyclerView()
-        loadCars()
-        setupToolbar()
+        setupClickListeners()
     }
 
     private fun setupRecyclerView() {
-        carAdapter = CarAdapter(cars) { car ->
-            val options = arrayOf("Purchase", "Book")
-            androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Choose an action for ${car.name}")
-                .setItems(options) { _, which ->
-                    when (which) {
-                        0 -> {
-                            addPurchase(car)
-                            Toast.makeText(this, "${car.name} purchased successfully!", Toast.LENGTH_SHORT).show()
-                        }
-                        1 -> {
-                            addBooking(car)
-                            Toast.makeText(this, "${car.name} booked successfully!", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-                .show()
+        carAdapter = CarAdapter(getSampleCars()) { car ->
+            // Handle car item click - navigate to car details
+            val intent = Intent(this, CarDetailsActivity::class.java)
+            intent.putExtra("car", car)
+            startActivity(intent)
         }
 
-        binding.recyclerViewCars.apply {
-            layoutManager = LinearLayoutManager(this@ModelsActivity)
+        binding.carsRecyclerView.apply {
+            layoutManager = GridLayoutManager(this@ModelsActivity, 2)
             adapter = carAdapter
         }
     }
 
+    private fun setupClickListeners() {
+        binding.backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
-    private fun loadCars() {
-        val sampleCars = listOf(
-            Car(1, "BMW X5", "2023", "15,000 km", "$65,000"),
-            Car(2, "Mercedes C-Class", "2022", "12,000 km", "$55,000"),
-            Car(3, "Audi Q7", "2023", "8,000 km", "$75,000"),
-            Car(4, "Toyota Land Cruiser", "2022", "20,000 km", "$85,000"),
-            Car(5, "Range Rover Sport", "2023", "5,000 km", "$95,000")
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterCars(newText)
+                return true
+            }
+        })
+    }
+
+    private fun filterCars(query: String?) {
+        val filteredCars = if (query.isNullOrEmpty()) {
+            getSampleCars()
+        } else {
+            getSampleCars().filter { car ->
+                car.name.contains(query, true) || car.mileage.contains(query, true)
+            }
+        }
+        carAdapter.updateList(filteredCars)
+    }
+
+    private fun getSampleCars(): List<Car> {
+        return listOf(
+            Car(
+                id = 1,
+                name = "BMW M8",
+                mileage = "15 km/l",
+                price = 250,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 2,
+                name = "Mercedes AMG",
+                mileage = "12 km/l",
+                price = 280,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 3,
+                name = "Audi R8",
+                mileage = "10 km/l",
+                price = 300,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 4,
+                name = "Porsche 911",
+                mileage = "11 km/l",
+                price = 320,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 5,
+                name = "Lamborghini Huracan",
+                mileage = "8 km/l",
+                price = 450,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 6,
+                name = "Ferrari F8",
+                mileage = "9 km/l",
+                price = 420,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 7,
+                name = "Tesla Model S",
+                mileage = "Electric",
+                price = 200,
+                imageResId = R.drawable.logo2
+            ),
+            Car(
+                id = 8,
+                name = "Range Rover",
+                mileage = "14 km/l",
+                price = 180,
+                imageResId = R.drawable.logo2
+            )
         )
-
-        carAdapter.submitList(sampleCars)
-    }
-
-    private fun addPurchase(car: Car) {
-        val sharedPref = getSharedPreferences("user_purchases", MODE_PRIVATE)
-        val purchases = sharedPref.getStringSet("purchases", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
-
-        val purchaseData = "${car.id}|${car.name}|${System.currentTimeMillis()}"
-        purchases.add(purchaseData)
-
-        with(sharedPref.edit()) {
-            putStringSet("purchases", purchases)
-            apply()
-        }
-    }
-
-    private fun addBooking(car: Car) {
-        val sharedPref = getSharedPreferences("user_bookings", MODE_PRIVATE)
-        val bookings = sharedPref.getStringSet("bookings", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
-
-        val bookingData = "${car.id}|${car.name}|${System.currentTimeMillis()}"
-        bookings.add(bookingData)
-
-        with(sharedPref.edit()) {
-            putStringSet("bookings", bookings)
-            apply()
-        }
-    }
-
-    private fun setupToolbar() {
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
     }
 }

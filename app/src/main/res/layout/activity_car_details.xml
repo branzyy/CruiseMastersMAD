@@ -1,177 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/white"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <!-- Header Section -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:padding="16dp"
+            android:background="?attr/colorPrimary">
 
+            <!-- Back Button -->
             <ImageButton
                 android:id="@+id/backButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/logo2"
-                android:contentDescription="@string/back" />
+                android:padding="12dp"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back"
+                android:tint="@color/white" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_centerInParent="true"
                 android:text="@string/car_details"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginStart="16dp" />
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
+        <!-- Car Image -->
         <ImageView
             android:id="@+id/carImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo2"
-            android:layout_marginTop="16dp" />
+            tools:src="@drawable/logo2" />
 
-        <TextView
-            android:id="@+id/carName"
+        <!-- Car Details Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Car Name"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
-
-        <!-- Car Year -->
-        <TextView
-            android:id="@+id/carYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Year"
-            android:textSize="16sp"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="8dp" />
-
-        <!-- Car Mileage -->
-        <TextView
-            android:id="@+id/carMileage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mileage"
-            android:textSize="16sp"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:id="@+id/carPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="$0/day"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="8dp" />
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="24dp">
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:padding="24dp">
 
+                <!-- Car Name -->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/carName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/horsepower"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/horsepowerValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 HP"
-                    android:textSize="16sp"
+                    android:text="Car Name"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
+                    tools:text="BMW M8" />
+
+                <!-- Car Mileage -->
+                <TextView
+                    android:id="@+id/carMileage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Mileage: 15 km/l"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    tools:text="Mileage: 15 km/l" />
+
+                <!-- Car Price -->
+                <TextView
+                    android:id="@+id/carPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="$250/day"
+                    android:textColor="@color/primary_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="$250/day" />
+
+                <!-- Features Section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/features"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Premium Sound System"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• GPS Navigation"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Climate Control"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Leather Seats"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+        </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/acceleration"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/accelerationValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0s"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/top_speed"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/topSpeedValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 mph"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
+        <!-- Book Button -->
         <Button
             android:id="@+id/bookButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/primary_color"
+            android:paddingVertical="16dp"
             android:text="@string/book_now"
             android:textAllCaps="false"
-            android:layout_marginTop="32dp"
-            style="@style/Widget.Material3.Button" />
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

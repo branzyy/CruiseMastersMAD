@@ -1,4 +1,4 @@
-package ui.activities
+package com.example.cruisemastersmad.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupAdapters() {
         purchaseAdapter = PurchaseAdapter()
-        bookingAdapter = BookingAdapter()
+        bookingAdapter = BookingAdapter(emptyList())
 
         binding.recyclerViewPurchases.apply {
             layoutManager = LinearLayoutManager(this@ProfileActivity)
@@ -66,6 +66,7 @@ class ProfileActivity : AppCompatActivity() {
             )
         }.reversed()
 
+        // Use submitList for PurchaseAdapter (ListAdapter)
         purchaseAdapter.submitList(purchases)
 
         if (purchases.isEmpty()) {
@@ -81,18 +82,28 @@ class ProfileActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_bookings", MODE_PRIVATE)
         val bookingsSet = sharedPref.getStringSet("bookings", setOf()) ?: setOf()
 
-        val bookings = bookingsSet.map { bookingData ->
-            val parts = bookingData.split("|")
-            Booking(
-                id = parts[0].toInt(),
-                userId = parts[1].toInt(),
-                vehicleName = parts[2],
-                pickupDate = parts[3],
-                returnDate = parts[4]
+        val bookings = if (bookingsSet.isNotEmpty()) {
+            bookingsSet.map { bookingData ->
+                val parts = bookingData.split("|")
+                Booking(
+                    id = parts[0].toInt(),
+                    userId = parts[1].toInt(),
+                    carName = parts[2],
+                    startDate = parts[3],
+                    endDate = parts[4]
+                )
+            }.reversed()
+        } else {
+            // Sample data if no bookings exist
+            listOf(
+                Booking(1, 1, "BMW M8", "2024-01-15", "2024-01-20"),
+                Booking(2, 1, "Mercedes AMG", "2024-02-01", "2024-02-05")
             )
-        }.reversed()
+        }
 
-        bookingAdapter.submitList(bookings)
+        // For BookingAdapter (RecyclerView.Adapter), create new instance with data
+        bookingAdapter = BookingAdapter(bookings)
+        binding.recyclerViewBookings.adapter = bookingAdapter
 
         if (bookings.isEmpty()) {
             binding.tvNoBookings.visibility = android.view.View.VISIBLE
@@ -106,6 +117,34 @@ class ProfileActivity : AppCompatActivity() {
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    // Helper method to add sample purchases for testing
+    private fun addSamplePurchases() {
+        val sharedPref = getSharedPreferences("user_purchases", MODE_PRIVATE)
+        val samplePurchases = setOf(
+            "1|BMW M8|1500.0|2024-01-15|Completed",
+            "2|Mercedes AMG|1200.0|2024-02-01|Processing"
+        )
+
+        with(sharedPref.edit()) {
+            putStringSet("purchases", samplePurchases)
+            apply()
+        }
+    }
+
+    // Helper method to add sample bookings for testing
+    private fun addSampleBookings() {
+        val sharedPref = getSharedPreferences("user_bookings", MODE_PRIVATE)
+        val sampleBookings = setOf(
+            "1|1|BMW M8|2024-01-15|2024-01-20",
+            "2|1|Mercedes AMG|2024-02-01|2024-02-05"
+        )
+
+        with(sharedPref.edit()) {
+            putStringSet("bookings", sampleBookings)
+            apply()
         }
     }
 }
