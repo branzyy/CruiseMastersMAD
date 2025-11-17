@@ -150,19 +150,45 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Book Button -->
-        <Button
-            android:id="@+id/bookButton"
+        <!-- Action Buttons -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/primary_color"
-            android:paddingVertical="16dp"
-            android:text="@string/book_now"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <!-- Purchase Button -->
+            <Button
+                android:id="@+id/purchaseButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:background="@color/primary_color"
+                android:paddingVertical="16dp"
+                android:text="@string/purchase"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Book Button -->
+            <Button
+                android:id="@+id/bookButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@color/primary_color"
+                android:paddingVertical="16dp"
+                android:text="@string/book_now"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -1,11 +1,11 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cruisemastersmad.databinding.ActivityBookingBinding
-import com.example.cruisemastersmad.ui.adapters.BookingAdapter
-import com.example.cruisemastersmad.ui.models.Booking
+import com.example.cruisemastersmad.adapters.BookingAdapter
+import com.example.cruisemastersmad.models.Booking
 
 class BookingActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.models
+package com.example.cruisemastersmad.models
 
 import android.os.Parcelable
 import androidx.room.Entity

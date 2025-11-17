@@ -1,9 +1,9 @@
-package com.example.cruisemastersmad.ui.database
+package com.example.cruisemastersmad.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.cruisemastersmad.ui.models.Booking
+import com.example.cruisemastersmad.models.Booking
 
 @Dao
 interface BookingDao {

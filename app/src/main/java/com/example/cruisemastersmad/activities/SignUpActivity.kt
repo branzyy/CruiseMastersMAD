@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cruisemastersmad.databinding.ActivitySignupBinding
-import com.example.cruisemastersmad.ui.activities.HomeActivity
-import com.example.cruisemastersmad.ui.models.User
+import com.example.cruisemastersmad.activities.HomeActivity
+import com.example.cruisemastersmad.models.User
 import com.example.cruisemastersmad.ui.viewmodels.LoginViewModel
 
 class SignUpActivity : AppCompatActivity() {
