@@ -34,18 +34,18 @@ class CarAdapter(
     inner class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val carImage: ImageView = itemView.findViewById(R.id.carImage)
         private val carName: TextView = itemView.findViewById(R.id.carName)
-        private val carMileage: TextView = itemView.findViewById(R.id.carMileage)
+        private val carBrand: TextView = itemView.findViewById(R.id.carBrand)
         private val carPrice: TextView = itemView.findViewById(R.id.carPrice)
 
         fun bind(car: Car) {
             carName.text = car.name
-            carMileage.text = car.mileage
+            carBrand.text = car.mileage
             carPrice.text = "$${car.price}/day"
             // Load image from drawable resources based on car.image string
             val imageResId = when (car.image) {
-                "bmw_m8.jpg" -> R.drawable.bmw_x5
-                "mercedes_amg.jpg" -> R.drawable.mercedes_c_class
-                "audi_r8.jpg" -> R.drawable.audi_a4
+                "bmw_x5.jpg" -> R.drawable.bmw_x5
+                "mercedes_c_class.jpg" -> R.drawable.mercedes_c_class
+                "audi_a4.jpg" -> R.drawable.audi_a4
                 else -> R.drawable.logo2
             }
             carImage.setImageResource(imageResId)

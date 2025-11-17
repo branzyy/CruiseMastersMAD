@@ -25,16 +25,16 @@ class BookingAdapter(private val bookings: List<Booking>) :
     override fun getItemCount(): Int = bookings.size
 
     class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
-        private val startDateTextView: TextView = itemView.findViewById(R.id.startDateTextView)
-        private val endDateTextView: TextView = itemView.findViewById(R.id.endDateTextView)
-        private val bookingIdTextView: TextView = itemView.findViewById(R.id.bookingIdTextView)
+        private val carNameTextView: TextView = itemView.findViewById(R.id.bookingCarName)
+        private val periodTextView: TextView = itemView.findViewById(R.id.bookingPeriod)
+        private val totalPriceTextView: TextView = itemView.findViewById(R.id.bookingTotalPrice)
+        private val statusTextView: TextView = itemView.findViewById(R.id.bookingStatus)
 
         fun bind(booking: Booking) {
             carNameTextView.text = booking.vehiclename
-            startDateTextView.text = "Start: ${booking.pickupdate}"
-            endDateTextView.text = "End: ${booking.returndate}"
-            bookingIdTextView.text = "Booking #${booking.bookingsID}"
+            periodTextView.text = "${booking.pickupdate} - ${booking.returndate}"
+            totalPriceTextView.text = "$${booking.bookingsID}"
+            statusTextView.text = booking.status
         }
     }
 }

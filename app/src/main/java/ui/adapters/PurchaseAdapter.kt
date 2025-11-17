@@ -24,10 +24,10 @@ class PurchaseAdapter : ListAdapter<Purchase, PurchaseAdapter.PurchaseViewHolder
     }
 
     class PurchaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
-        private val amountTextView: TextView = itemView.findViewById(R.id.amountTextView)
-        private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
-        private val statusTextView: TextView = itemView.findViewById(R.id.statusTextView)
+        private val carNameTextView: TextView = itemView.findViewById(R.id.purchaseCarName)
+        private val amountTextView: TextView = itemView.findViewById(R.id.purchaseAmount)
+        private val dateTextView: TextView = itemView.findViewById(R.id.purchaseDate)
+        private val statusTextView: TextView = itemView.findViewById(R.id.purchaseStatus)
 
         fun bind(purchase: Purchase) {
             carNameTextView.text = purchase.vehiclename

@@ -24,14 +24,9 @@ class CarDetailsActivity : AppCompatActivity() {
     private fun displayCarDetails(car: Car) {
         // Load image from drawable resources based on car.image string
         val imageResId = when (car.image) {
-            "bmw_m8.jpg" -> R.drawable.bmw_x5
-            "mercedes_amg.jpg" -> R.drawable.mercedes_c_class
-            "audi_r8.jpg" -> R.drawable.audi_a4
-            "porsche_911.jpg" -> R.drawable.bmw_x5 // Use existing drawable
-            "lamborghini_huracan.jpg" -> R.drawable.bmw_x5 // Use existing drawable
-            "ferrari_f8.jpg" -> R.drawable.bmw_x5 // Use existing drawable
-            "tesla_model_s.jpg" -> R.drawable.bmw_x5 // Use existing drawable
-            "range_rover.jpg" -> R.drawable.bmw_x5 // Use existing drawable
+            "bmw_x5.jpg" -> R.drawable.bmw_x5
+            "mercedes_c_class.jpg" -> R.drawable.mercedes_c_class
+            "audi_a4.jpg" -> R.drawable.audi_a4
             else -> R.drawable.logo2
         }
         binding.carImage.setImageResource(imageResId)
