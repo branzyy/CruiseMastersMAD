@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.models
+package com.example.cruisemastersmad.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

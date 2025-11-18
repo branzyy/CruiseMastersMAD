@@ -1,10 +1,10 @@
-package com.example.cruisemastersmad.ui.database
+package com.example.cruisemastersmad.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.cruisemastersmad.ui.models.Car
+import com.example.cruisemastersmad.models.Car
 
 @Dao
 interface CarDao {

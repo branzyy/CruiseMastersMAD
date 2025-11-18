@@ -1,16 +1,25 @@
-# TODO: Fix App Crashing on Profile and Models Button Clicks
+# TODO: Fix Profile and Models Button Crashing
 
-## Issues Identified
-- **Adapter ID Mismatches**: RecyclerView adapters are using incorrect view IDs that don't match the layout XML files, causing `findViewById` to return null and leading to NullPointerExceptions when setting text.
-- **Incorrect Imports**: ModelsActivity has wrong import for CarDetailsActivity.
-- **Image Loading Issues**: CarDetailsActivity image loading cases don't match sample car data.
-- **Data Parsing**: Potential issues in ProfileActivity data loading from SharedPreferences.
+## Information Gathered
+- The app has activities in `com.example.cruisemastersmad.activities` that import from `com.example.cruisemastersmad.ui`
+- The UI-related files (models, adapters, viewmodels, activities) are currently in `app/src/main/java/ui` with package `com.example.cruisemastersmad.ui`
+- The directory structure (`ui`) doesn't match the package name (`com.example.cruisemastersmad.ui`), causing import failures and resulting in white screen and app crashes when clicking profile or models buttons
+- Activities like `HomeActivity` start intents for `ModelsActivity` and `ProfileActivity`, but these activities fail to load due to unresolved imports
 
-## Tasks
-- [x] Fix CarAdapter view IDs to match item_car.xml
-- [x] Fix PurchaseAdapter view IDs to match item_purchase.xml
-- [x] Fix BookingAdapter view IDs to match item_booking.xml
-- [x] Correct import in ModelsActivity for CarDetailsActivity
-- [x] Update image loading logic in CarDetailsActivity
-- [ ] Test Profile and Models activities after fixes
-- [ ] Verify RecyclerViews display data correctly
+## Plan
+- Move all files from `app/src/main/java/ui` to `app/src/main/java/com/example/cruisemastersmad/ui` to match the package structure
+- This will ensure the package `com.example.cruisemastersmad.ui` corresponds to the correct directory path
+- No code changes needed as the package declarations are already correct
+
+## Dependent Files to be edited
+- None (file move operation only)
+
+## Followup steps
+- Build the Android project to verify no compilation errors
+- Test the profile and models buttons to ensure they navigate correctly without crashing
+- Run the app on an emulator/device to confirm the fix
+
+## Status
+- [ ] Move UI files to correct directory structure
+- [ ] Build project
+- [ ] Test profile and models navigation

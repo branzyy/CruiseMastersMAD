@@ -1,10 +1,10 @@
-package com.example.cruisemastersmad.ui.viewmodels
+package com.example.cruisemastersmad.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cruisemastersmad.ui.database.AppDatabase
-import com.example.cruisemastersmad.ui.models.User
+import com.example.cruisemastersmad.database.AppDatabase
+import com.example.cruisemastersmad.models.User
 import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {

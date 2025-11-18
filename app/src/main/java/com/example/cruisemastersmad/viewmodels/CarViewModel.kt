@@ -1,12 +1,12 @@
-package com.example.cruisemastersmad.ui.viewmodels
+package com.example.cruisemastersmad.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.cruisemastersmad.ui.database.AppDatabase
-import com.example.cruisemastersmad.ui.models.Car
+import com.example.cruisemastersmad.database.AppDatabase
+import com.example.cruisemastersmad.models.Car
 import kotlinx.coroutines.launch
 
 class CarViewModel(application: Application) : AndroidViewModel(application) {

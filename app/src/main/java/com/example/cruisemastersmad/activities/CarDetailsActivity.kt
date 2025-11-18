@@ -1,13 +1,15 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cruisemastersmad.R
 import com.example.cruisemastersmad.databinding.ActivityCarDetailsBinding
-import com.example.cruisemastersmad.ui.models.Car
+import com.example.cruisemastersmad.models.Car
 
 class CarDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCarDetailsBinding
+    private var car: Car? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +17,7 @@ class CarDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Get the car object from the intent using Parcelable
-        val car = intent.getParcelableExtra("car", Car::class.java)
+        car = intent.getParcelableExtra("car", Car::class.java)
         car?.let { displayCarDetails(it) }
 
         setupClickListeners()
@@ -36,8 +38,18 @@ class CarDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
+        binding.purchaseButton.setOnClickListener {
+            // Navigate to purchase screen
+            val intent = Intent(this, com.example.cruisemastersmad.activities.PurchaseActivity::class.java)
+            intent.putExtra("car", car)
+            startActivity(intent)
+        }
+
         binding.bookButton.setOnClickListener {
             // Navigate to booking screen
+            val intent = Intent(this, com.example.cruisemastersmad.activities.BookingActivity::class.java)
+            intent.putExtra("car", car)
+            startActivity(intent)
         }
 
         binding.backButton.setOnClickListener {

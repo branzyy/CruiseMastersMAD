@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,20 +22,16 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupViews() {
         binding.btnBrowseModels.setOnClickListener {
-            startActivity(Intent(this, ModelsActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.ModelsActivity::class.java))
         }
 
         binding.btnProfile.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        binding.btnLogout.setOnClickListener {
-            logoutUser()
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.ProfileActivity::class.java))
         }
 
         // Also set click listener on the card itself
         binding.root.findViewById<LinearLayout>(R.id.browseModelsCard).setOnClickListener {
-            startActivity(Intent(this, ModelsActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.ModelsActivity::class.java))
         }
     }
 
@@ -56,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
             apply()
         }
 
-        startActivity(Intent(this, com.example.cruisemastersmad.ui.activities.MainActivity::class.java))
+        startActivity(Intent(this, com.example.cruisemastersmad.activities.MainActivity::class.java))
         finish()
     }
 }

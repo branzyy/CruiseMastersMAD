@@ -69,13 +69,18 @@
                     android:layout_height="48dp"
                     android:src="@drawable/ic_car" />
 
+                    android:paddingStart="16dp">
+>>>>>>> b54cc86 (Fix package structure and API integration)
+=======
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    >
+                    android:paddingStart="16dp">
+=======
+                    android:paddingStart="16dp">
+>>>>>>> b54cc86 (Fix package structure and API integration)
 
                     <TextView
                         android:layout_width="match_parent"
@@ -95,20 +100,9 @@
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <!-- This is the actual button that handles clicks -->
-        <Button
-            android:id="@+id/btnBrowseModels"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/browse_models"
-            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -132,17 +126,6 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <!-- Logout Button -->
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_outline_button"
-            android:paddingVertical="14dp"
-            android:text="@string/logout"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="16sp" />
 
     </LinearLayout>
 

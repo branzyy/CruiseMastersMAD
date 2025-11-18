@@ -1,14 +1,14 @@
-package com.example.cruisemastersmad.ui.database
+package com.example.cruisemastersmad.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.cruisemastersmad.ui.models.Booking
-import com.example.cruisemastersmad.ui.models.Car
-import com.example.cruisemastersmad.ui.models.Purchase
-import com.example.cruisemastersmad.ui.models.User
+import com.example.cruisemastersmad.models.Booking
+import com.example.cruisemastersmad.models.Car
+import com.example.cruisemastersmad.models.Purchase
+import com.example.cruisemastersmad.models.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

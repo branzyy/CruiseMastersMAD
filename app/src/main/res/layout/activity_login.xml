@@ -22,7 +22,8 @@
             android:theme="?attr/actionBarTheme"
             app:navigationIcon="@drawable/backlogo"
             app:title="@string/login"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white"
+            app:navigationIconTint="@color/white" />
 
         <!-- Logo -->
         <ImageView

@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cruisemastersmad.databinding.ActivityLoginBinding
-import com.example.cruisemastersmad.ui.activities.HomeActivity
+import com.example.cruisemastersmad.activities.HomeActivity as HomeActivityAlias
 import com.example.cruisemastersmad.ui.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.tvSignUp.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.SignUpActivity::class.java))
         }
 
         binding.toolbar.setNavigationOnClickListener {
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, HomeActivityAlias::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
