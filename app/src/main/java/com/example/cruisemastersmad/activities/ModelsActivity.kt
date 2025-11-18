@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cruisemastersmad.databinding.ActivityModelsBinding
 import com.example.cruisemastersmad.ui.adapters.CarAdapter
-import com.example.cruisemastersmad.models.Car
+import com.example.cruisemastersmad.models.Car as CarModel
 import com.example.cruisemastersmad.ui.viewmodels.CarViewModel
 
 class ModelsActivity : AppCompatActivity() {
@@ -51,7 +51,7 @@ class ModelsActivity : AppCompatActivity() {
     private fun loadCars() {
         carViewModel.loadCars()
         carViewModel.cars.observe(this) { cars ->
-            carAdapter.updateList(cars as List<Car>)
+            carAdapter.updateList(cars)
         }
     }
 }

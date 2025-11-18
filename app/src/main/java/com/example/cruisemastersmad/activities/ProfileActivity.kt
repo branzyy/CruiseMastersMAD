@@ -43,11 +43,13 @@ class ProfileActivity : AppCompatActivity() {
         binding.recyclerViewPurchases.apply {
             layoutManager = LinearLayoutManager(this@ProfileActivity)
             adapter = purchaseAdapter
+            isNestedScrollingEnabled = true
         }
 
         binding.recyclerViewBookings.apply {
             layoutManager = LinearLayoutManager(this@ProfileActivity)
             adapter = bookingAdapter
+            isNestedScrollingEnabled = true
         }
     }
 
@@ -111,7 +113,7 @@ class ProfileActivity : AppCompatActivity() {
             apply()
         }
 
-        startActivity(Intent(this, com.example.cruisemastersmad.activities.MainActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 
