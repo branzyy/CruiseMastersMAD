@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cruisemastersmad.databinding.ActivityProfileBinding
-import com.example.cruisemastersmad.ui.adapters.BookingAdapter
-import com.example.cruisemastersmad.ui.adapters.PurchaseAdapter
+import com.example.cruisemastersmad.adapters.BookingAdapter
+import com.example.cruisemastersmad.adapters.PurchaseAdapter
 import com.example.cruisemastersmad.models.Booking
 import com.example.cruisemastersmad.models.Purchase
-import com.example.cruisemastersmad.ui.viewmodels.BookingViewModel
-import com.example.cruisemastersmad.ui.viewmodels.PurchaseViewModel
+import com.example.cruisemastersmad.viewmodels.BookingViewModel
+import com.example.cruisemastersmad.viewmodels.PurchaseViewModel
 
 class ProfileActivity : AppCompatActivity() {
 

@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cruisemastersmad.databinding.ActivityModelsBinding
-import com.example.cruisemastersmad.ui.adapters.CarAdapter
+import com.example.cruisemastersmad.adapters.CarAdapter
 import com.example.cruisemastersmad.models.Car as CarModel
-import com.example.cruisemastersmad.ui.viewmodels.CarViewModel
+import com.example.cruisemastersmad.viewmodels.CarViewModel
 
 class ModelsActivity : AppCompatActivity() {
 

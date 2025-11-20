@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.adapters
+package com.example.cruisemastersmad.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruisemastersmad.R
-import com.example.cruisemastersmad.ui.models.Purchase
+import com.example.cruisemastersmad.models.Purchase
 
 class PurchaseAdapter : ListAdapter<Purchase, PurchaseAdapter.PurchaseViewHolder>(PurchaseDiffCallback) {
 
