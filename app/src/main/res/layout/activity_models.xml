@@ -64,4 +64,6 @@
         android:padding="8dp"
         tools:listitem="@layout/item_car" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
