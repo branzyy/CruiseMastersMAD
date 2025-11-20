@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruisemastersmad.R
-import com.example.cruisemastersmad.ui.models.Booking
+import com.example.cruisemastersmad.models.Booking
 
 class BookingAdapter(private val bookings: List<Booking>) :
     RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {

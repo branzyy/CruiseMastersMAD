@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruisemastersmad.R
-import com.example.cruisemastersmad.ui.models.Car
+import com.example.cruisemastersmad.models.Car
 
 class CarAdapter(
     private var cars: List<Car>,

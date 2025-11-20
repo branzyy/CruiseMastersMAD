@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cruisemastersmad.databinding.ActivitySignupBinding
 import com.example.cruisemastersmad.activities.HomeActivity
 import com.example.cruisemastersmad.models.User
-import com.example.cruisemastersmad.ui.viewmodels.LoginViewModel
+import com.example.cruisemastersmad.viewmodels.LoginViewModel
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding

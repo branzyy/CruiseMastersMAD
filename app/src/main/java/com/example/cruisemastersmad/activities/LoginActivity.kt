@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cruisemastersmad.databinding.ActivityLoginBinding
 import com.example.cruisemastersmad.activities.HomeActivity as HomeActivityAlias
-import com.example.cruisemastersmad.ui.viewmodels.LoginViewModel
+import com.example.cruisemastersmad.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
