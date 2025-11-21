@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cruisemastersmad.databinding.ActivityModelsBinding
-import com.example.cruisemastersmad.adapters.CarAdapter
+import com.example.cruisemastersmad.ui.adapters.CarAdapter
 import com.example.cruisemastersmad.models.Car as CarModel
 import com.example.cruisemastersmad.viewmodels.CarViewModel
 
@@ -32,7 +32,7 @@ class ModelsActivity : AppCompatActivity() {
         carAdapter = CarAdapter(emptyList()) { car ->
             // Handle car item click - navigate to car details
             val intent = Intent(this, com.example.cruisemastersmad.activities.CarDetailsActivity::class.java)
-            intent.putExtra("car", car)
+            intent.putExtra("car", car as java.io.Serializable)
             startActivity(intent)
         }
 

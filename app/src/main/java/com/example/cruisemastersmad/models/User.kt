@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName
 data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    @SerializedName("name")
-    val name: String,
+    val firstname: String,
+    val lastname: String,
     val email: String,
     val password: String
 )

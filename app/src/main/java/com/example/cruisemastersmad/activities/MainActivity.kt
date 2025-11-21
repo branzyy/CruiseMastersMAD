@@ -1,11 +1,9 @@
-package com.example.cruisemastersmad.ui.activities
+package com.example.cruisemastersmad.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cruisemastersmad.databinding.ActivityMainBinding
-import com.example.cruisemastersmad.ui.activities.LoginActivity
-import com.example.cruisemastersmad.ui.activities.SignUpActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val isLoggedIn = sharedPref.getBoolean("is_logged_in", false)
 
         if (isLoggedIn) {
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.HomeActivity::class.java))
             finish()
         } else {
             setupClickListeners()
@@ -29,11 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.LoginActivity::class.java))
         }
 
         binding.btnSignUp.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.SignUpActivity::class.java))
         }
     }
 }
