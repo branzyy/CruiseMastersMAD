@@ -7,10 +7,10 @@
 4. **Duplicate Packages**: Both `ui` and `com.example.cruisemastersmad` packages exist with conflicting code
 
 ## Tasks:
-- [ ] Fix HomeActivity button references to use correct IDs from layout
-- [ ] Update ModelsActivity to use correct CarAdapter from com.example.cruisemastersmad package
-- [ ] Update ProfileActivity to use correct adapters from com.example.cruisemastersmad package
-- [ ] Ensure all imports are consistent within the com.example.cruisemastersmad package
+- [x] Fix HomeActivity button references to use correct IDs from layout
+- [x] Update ModelsActivity to use correct CarAdapter from com.example.cruisemastersmad package
+- [x] Update ProfileActivity to use correct adapters from com.example.cruisemastersmad package
+- [x] Ensure all imports are consistent within the com.example.cruisemastersmad package
 - [ ] Test navigation between activities
 - [ ] Remove duplicate ui package if not needed
 

@@ -50,7 +50,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.tvLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, com.example.cruisemastersmad.activities.LoginActivity::class.java))
         }
 
         binding.toolbar.setNavigationOnClickListener {
@@ -77,6 +77,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUpUser(firstName: String, lastName: String, email: String, password: String) {
         val user = User(
+            id = 0,
             firstname = firstName,
             lastname = lastName,
             email = email,

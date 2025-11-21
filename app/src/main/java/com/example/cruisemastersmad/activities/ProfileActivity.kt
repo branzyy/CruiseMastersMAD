@@ -113,7 +113,7 @@ class ProfileActivity : AppCompatActivity() {
             apply()
         }
 
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, com.example.cruisemastersmad.activities.LoginActivity::class.java))
         finish()
     }
 
