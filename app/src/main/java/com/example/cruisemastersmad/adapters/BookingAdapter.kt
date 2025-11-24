@@ -1,4 +1,4 @@
-package com.example.cruisemastersmad.ui.adapters
+package com.example.cruisemastersmad.adapters
 
 import android.view.LayoutInflater
 import android.view.View

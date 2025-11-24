@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupViews() {
         // Set click listener on the card itself for browsing models
         binding.browseModelsCard.setOnClickListener {
-        startActivity(Intent(this, com.example.cruisemastersmad.ui.activities.ModelsActivity::class.java))
+        startActivity(Intent(this, com.example.cruisemastersmad.activities.ModelsActivity::class.java))
         }
 
         binding.btnProfile.setOnClickListener {
